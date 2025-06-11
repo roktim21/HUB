@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vuhub - University Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brick: "#8B2C2C",
+              offwhite: "#FDF6F0",
+              gold: "#D4A373",
+              charcoal: "#2E2E2E",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fdf6f0;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        min-width: 220px;
+        z-index: 50;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .feature-card {
+        transition: all 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .blood-group {
+        transition: all 0.2s ease;
+      }
+      .blood-group:hover {
+        transform: scale(1.05);
+        background-color: rgba(139, 44, 44, 0.1);
+      }
+      .teacher-card {
+        transition: all 0.2s ease;
+      }
+      .teacher-card:hover {
+        transform: translateY(-3px);
+      }
+      .campus-image {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpath fill='%23a04040' d='M486 705.8c-109.3-21.8-223.4-32.2-335.3-19.4C99.5 692.1 49 703 0 719.8V800h843.8c-115.9-33.2-230.8-68.1-347.6-92.2C492.8 707.1 489.4 706.5 486 705.8z'/%3E%3Cpath fill='%23b55353' d='M1600 0H0v719.8c49-16.8 99.5-27.8 150.7-33.5c111.9-12.7 226-2.4 335.3 19.4c3.4 0.7 6.8 1.4 10.2 2c116.8 24 231.7 59 347.6 92.2H1600V0z'/%3E%3Cpath fill='%23ca6767' d='M478.4 581c3.2 0.8 6.4 1.7 9.5 2.5c196.2 52.5 388.7 133.5 593.5 176.6c174.2 36.6 349.5 29.2 518.6-10.2V0H0v574.9c52.3-17.6 106.5-27.7 161.1-30.9C268.4 537.4 375.7 554.2 478.4 581z'/%3E%3Cpath fill='%23df7a7a' d='M0 0v429.4c55.6-18.4 113.5-27.3 171.4-27.7c102.8-0.8 203.2 22.7 299.3 54.5c3 1 5.9 2 8.9 3c183.6 62 365.7 146.1 562.4 192.1c186.7 43.7 376.3 34.4 557.9-12.6V0H0z'/%3E%3Cpath fill='%23f48e8e' d='M181.8 259.4c98.2 6 191.9 35.2 281.3 72.1c2.8 1.1 5.5 2.3 8.3 3.4c171 71.6 342.7 158.5 531.3 207.7c198.8 51.8 403.4 40.8 597.3-14.8V0H0v283.2C59 263.6 120.6 255.7 181.8 259.4z'/%3E%3Cpath fill='%23f59e9e' d='M1600 0H0v136.3c62.3-20.9 127.7-27.5 192.2-19.2c93.6 12.1 180.5 47.7 263.3 89.6c2.6 1.3 5.1 2.6 7.7 3.9c158.4 81.1 319.7 170.9 500.3 223.2c210.5 61 430.8 49 636.6-16.6V0z'/%3E%3Cpath fill='%23f7afaf' d='M454.9 86.3C600.7 177 751.6 269.3 924.1 325c208.6 67.4 431.3 60.8 637.9-5.3c12.8-4.1 25.4-8.4 38.1-12.9V0H288.1c56 21.3 108.7 50.6 159.7 82C450.2 83.4 452.5 84.9 454.9 86.3z'/%3E%3Cpath fill='%23f8bfbf' d='M1600 0H498c118.1 85.8 243.5 164.5 386.8 216.2c191.8 69.2 400 74.7 595 21.1c40.8-11.2 81.1-25.2 120.3-41.7V0z'/%3E%3Cpath fill='%23facfcf' d='M1397.5 154.8c47.2-10.6 93.6-25.3 138.6-43.8c21.7-8.9 43-18.8 63.9-29.5V0H643.4c62.9 41.7 129.7 78.2 202.1 107.4C1020.4 178.1 1214.2 196.1 1397.5 154.8z'/%3E%3Cpath fill='%23fcdfdf' d='M1315.3 72.4c75.3-12.6 148.9-37.1 216.8-72.4h-723C966.8 71 1144.7 101 1315.3 72.4z'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="bg-offwhite text-charcoal">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <div class="mr-3">
+            <svg
+              class="w-10 h-10"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M25 2L2 15L25 28L48 15L25 2Z" fill="#8B2C2C" />
+              <path
+                d="M10 20V35L25 45L40 35V20"
+                stroke="#8B2C2C"
+                stroke-width="4"
+              />
+              <path d="M25 28V45" stroke="#8B2C2C" stroke-width="2" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold text-brick">Vuhub</h1>
+            <p class="text-xs md:text-sm text-gray-500">University Portal</p>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="dropdown">
+          <button
+            class="p-2 rounded-full hover:bg-offwhite transition duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </button>
+          <div class="dropdown-content bg-white shadow-lg rounded-lg py-2">
+            <a
+              href="#routine"
+              class="block px-4 py-2 hover:bg-offwhite transition duration-300"
+              >Routine</a
+            >
+            <a
+              href="#teachers"
+              class="block px-4 py-2 hover:bg-offwhite transition duration-300"
+              >Teachers Information</a
+            >
+            <a
+              href="#canteen"
+              class="block px-4 py-2 hover:bg-offwhite transition duration-300"
+              >Canteen Information</a
+            >
+            <a
+              href="#blood"
+              class="block px-4 py-2 hover:bg-offwhite transition duration-300"
+              >Blood Donor</a
+            >
+            <a
+              href="#about"
+              class="block px-4 py-2 hover:bg-offwhite transition duration-300"
+              >Developed by</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative w-full h-64 bg-cover bg-center"
+      style="
+        background-image: url('image/486539550_1058822972943427_5313651864583693297_n.jpg');
+      "
+    >
+      <div
+        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+      >
+        <div class="text-center text-white">
+          <h1 class="text-3xl font-bold">Welcome to Vuhub</h1>
+          <p class="mt-2 max-w-md mx-auto">
+            Your digital portal for university life.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto px-4 py-12">
+      <h2
+        class="text-2xl md:text-3xl font-bold text-center mb-12 text-charcoal"
+      >
+        University Resources
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Routine Feature -->
+        <div
+          id="routine"
+          class="feature-card bg-white rounded-lg shadow-md p-6 border-t-2 border-gold"
+        >
+          <div
+            class="bg-brick/10 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-brick"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-charcoal">
+            Class Routine
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Access your class schedules easily with our intuitive routine
+            finder.
+          </p>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Department</label
+              >
+              <select
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
+              >
+                <option>Computer Science</option>
+                <option>Electrical Engineering</option>
+                <option>Business Administration</option>
+                <option>Architecture</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Semester</label
+              >
+              <select
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
+              >
+                <option>1st Semester</option>
+                <option>2nd Semester</option>
+                <option>3rd Semester</option>
+                <option>4th Semester</option>
+                <option>5th Semester</option>
+                <option>6th Semester</option>
+                <option>7th Semester</option>
+                <option>8th Semester</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Section</label
+              >
+              <select
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
+              >
+                <option>Section A</option>
+                <option>Section B</option>
+                <option>Section C</option>
+                <option>Section D</option>
+              </select>
+            </div>
+            <button
+              class="w-full bg-gold hover:bg-gold/80 text-charcoal font-medium py-2 px-4 rounded-md transition duration-300"
+            >
+              View Routine
+            </button>
+          </div>
+        </div>
+
+        <!-- Teachers Information -->
+        <div
+          id="teachers"
+          class="feature-card bg-white rounded-lg shadow-md p-6 border-t-2 border-gold"
+        >
+          <div
+            class="bg-brick/10 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-brick"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-charcoal">
+            Faculty Directory
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Find contact details for all faculty members by department.
+          </p>
+
+          <div class="space-y-3">
+            <div class="border border-gray-200 rounded-md overflow-hidden">
+              <div
+                class="bg-offwhite px-4 py-2 font-medium cursor-pointer flex justify-between items-center"
+                onclick="toggleDept('cse')"
+              >
+                <span>Computer Science</span>
+                <span class="text-gold">+</span>
+              </div>
+              <div id="cse" class="hidden p-4 space-y-4">
+                <div
+                  class="teacher-card flex items-center p-2 border-b border-gray-100"
+                >
+                  <div
+                    class="w-12 h-12 bg-brick/10 rounded-full mr-3 flex-shrink-0 overflow-hidden flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-8 w-8 text-brick/60"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium">Dr. Sarah Johnson</p>
+                    <p class="text-sm text-gray-600">sarah.j@vuhub.edu</p>
+                    <p class="text-sm text-gray-600">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="teacher-card flex items-center p-2">
+                  <div
+                    class="w-12 h-12 bg-brick/10 rounded-full mr-3 flex-shrink-0 overflow-hidden flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-8 w-8 text-brick/60"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium">Prof. Michael Chen</p>
+                    <p class="text-sm text-gray-600">m.chen@vuhub.edu</p>
+                    <p class="text-sm text-gray-600">+1 (555) 987-6543</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-md overflow-hidden">
+              <div
+                class="bg-offwhite px-4 py-2 font-medium cursor-pointer flex justify-between items-center"
+                onclick="toggleDept('eee')"
+              >
+                <span>Electrical Engineering</span>
+                <span class="text-gold">+</span>
+              </div>
+              <div id="eee" class="hidden p-4">
+                <div class="teacher-card flex items-center p-2">
+                  <div
+                    class="w-12 h-12 bg-brick/10 rounded-full mr-3 flex-shrink-0 overflow-hidden flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-8 w-8 text-brick/60"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium">Dr. Robert Williams</p>
+                    <p class="text-sm text-gray-600">r.williams@vuhub.edu</p>
+                    <p class="text-sm text-gray-600">+1 (555) 234-5678</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="w-full bg-gold hover:bg-gold/80 text-charcoal font-medium py-2 px-4 rounded-md transition duration-300"
+            >
+              View All Faculty
+            </button>
+          </div>
+        </div>
+
+        <!-- Canteen Information -->
+        <div
+          id="canteen"
+          class="feature-card bg-white rounded-lg shadow-md p-6 border-t-2 border-gold"
+        >
+          <div
+            class="bg-brick/10 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-brick"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-charcoal">Canteen Menu</h3>
+          <p class="text-gray-600 mb-4">
+            Check menu items and prices at the university canteen.
+          </p>
+
+          <div class="overflow-auto max-h-64">
+            <table class="min-w-full">
+              <thead>
+                <tr class="bg-offwhite">
+                  <th
+                    class="py-2 px-4 text-left text-sm font-medium text-charcoal"
+                  >
+                    Item
+                  </th>
+                  <th
+                    class="py-2 px-4 text-right text-sm font-medium text-charcoal"
+                  >
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="py-2 px-4 text-sm">Coffee</td>
+                  <td class="py-2 px-4 text-sm text-right">$1.50</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Tea</td>
+                  <td class="py-2 px-4 text-sm text-right">$1.00</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Sandwich</td>
+                  <td class="py-2 px-4 text-sm text-right">$3.50</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Burger</td>
+                  <td class="py-2 px-4 text-sm text-right">$4.00</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Pizza Slice</td>
+                  <td class="py-2 px-4 text-sm text-right">$2.50</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Salad</td>
+                  <td class="py-2 px-4 text-sm text-right">$3.75</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-4 text-sm">Fruit Cup</td>
+                  <td class="py-2 px-4 text-sm text-right">$2.25</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button
+            class="w-full mt-4 bg-gold hover:bg-gold/80 text-charcoal font-medium py-2 px-4 rounded-md transition duration-300"
+          >
+            View Full Menu
+          </button>
+        </div>
+
+        <!-- Blood Donor -->
+        <div
+          id="blood"
+          class="feature-card bg-white rounded-lg shadow-md p-6 border-t-2 border-gold"
+        >
+          <div
+            class="bg-brick/10 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-brick"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-charcoal">
+            Blood Donor Network
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Find blood donors within the university community.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('A+')"
+            >
+              <span class="text-xl font-bold text-brick">A+</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('A-')"
+            >
+              <span class="text-xl font-bold text-brick">A-</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('B+')"
+            >
+              <span class="text-xl font-bold text-brick">B+</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('B-')"
+            >
+              <span class="text-xl font-bold text-brick">B-</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('AB+')"
+            >
+              <span class="text-xl font-bold text-brick">AB+</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('AB-')"
+            >
+              <span class="text-xl font-bold text-brick">AB-</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('O+')"
+            >
+              <span class="text-xl font-bold text-brick">O+</span>
+            </div>
+            <div
+              class="blood-group bg-brick/5 rounded-lg p-3 text-center cursor-pointer border border-brick/20"
+              onclick="showDonors('O-')"
+            >
+              <span class="text-xl font-bold text-brick">O-</span>
+            </div>
+          </div>
+
+          <div
+            id="donor-info"
+            class="hidden border border-gray-200 rounded-md p-4 mb-4 bg-offwhite/50"
+          >
+            <h4 class="font-medium mb-2">
+              Available Donors:
+              <span id="blood-type" class="text-brick font-bold"></span>
+            </h4>
+            <div id="donor-list" class="space-y-2 text-sm"></div>
+          </div>
+
+          <button
+            class="w-full bg-gold hover:bg-gold/80 text-charcoal font-medium py-2 px-4 rounded-md transition duration-300"
+          >
+            Register as Donor
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-brick text-white py-8 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-2">Vuhub</h2>
+            <p class="text-offwhite/80">
+              Your complete university resource portal
+            </p>
+          </div>
+          <div class="text-center md:text-right">
+            <p class="mb-2 text-gold">Developed by</p>
+            <p class="font-medium">Student Development Team</p>
+            <div class="flex justify-center md:justify-end space-x-4 mt-3">
+              <a
+                href="#"
+                class="text-white hover:text-gold transition duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-gold transition duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-white hover:text-gold transition duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/20 mt-6 pt-6 text-center text-sm text-white/70"
+        >
+          <p>&copy; 2023 Vuhub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleDept(id) {
+        const element = document.getElementById(id);
+        if (element.classList.contains("hidden")) {
+          element.classList.remove("hidden");
+          element.previousElementSibling.querySelector(
+            "span:last-child"
+          ).textContent = "-";
+        } else {
+          element.classList.add("hidden");
+          element.previousElementSibling.querySelector(
+            "span:last-child"
+          ).textContent = "+";
+        }
+      }
+
+      function showDonors(bloodType) {
+        const donorInfo = document.getElementById("donor-info");
+        const bloodTypeSpan = document.getElementById("blood-type");
+        const donorList = document.getElementById("donor-list");
+
+        // Sample donor data - in a real app, this would come from a database
+        const donors = {
+          "A+": [
+            {
+              name: "John Smith",
+              phone: "555-123-4567",
+              lastDonation: "2023-03-15",
+            },
+            {
+              name: "Emily Johnson",
+              phone: "555-234-5678",
+              lastDonation: "2023-05-22",
+            },
+          ],
+          "B+": [
+            {
+              name: "Michael Brown",
+              phone: "555-345-6789",
+              lastDonation: "2023-04-10",
+            },
+          ],
+          "O+": [
+            {
+              name: "Sarah Davis",
+              phone: "555-456-7890",
+              lastDonation: "2023-02-28",
+            },
+            {
+              name: "David Wilson",
+              phone: "555-567-8901",
+              lastDonation: "2023-06-05",
+            },
+            {
+              name: "Lisa Martinez",
+              phone: "555-678-9012",
+              lastDonation: "2023-01-17",
+            },
+          ],
+          "AB+": [
+            {
+              name: "Robert Taylor",
+              phone: "555-789-0123",
+              lastDonation: "2023-05-30",
+            },
+          ],
+        };
+
+        // Show donor info section
+        donorInfo.classList.remove("hidden");
+        bloodTypeSpan.textContent = bloodType;
+
+        // Clear previous donor list
+        donorList.innerHTML = "";
+
+        // Add donors to the list
+        if (donors[bloodType] && donors[bloodType].length > 0) {
+          donors[bloodType].forEach((donor) => {
+            const donorElement = document.createElement("div");
+            donorElement.className = "border-b border-gray-200 pb-2";
+            donorElement.innerHTML = `
+                        <p class="font-medium">${donor.name}</p>
+                        <p>Phone: ${donor.phone}</p>
+                        <p>Last Donation: ${donor.lastDonation}</p>
+                    `;
+            donorList.appendChild(donorElement);
+          });
+        } else {
+          const nodonorElement = document.createElement("p");
+          nodonorElement.textContent =
+            "No donors available for this blood type.";
+          donorList.appendChild(nodonorElement);
+        }
+      }
+    </script>
+  </body>
+</html>
