@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vuhub - University Portal</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style2.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
@@ -545,124 +545,149 @@
 
     <!-- Footer -->
     <!-- Footer -->
-<footer id="about" class="bg-brick text-white py-8 mt-12 relative z-10">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="mb-6 md:mb-0">
-        <h2 class="text-2xl font-bold mb-2">Vuhub</h2>
-        <p class="text-offwhite/80">
-          Your complete university resource portal
-        </p>
-      </div>
-      <div class="text-center md:text-right">
-        <p class="mb-2 text-gold">Developed by</p>
-        <p class="team-nerds font-medium text-lg" onclick="openTeamModal()">Team Nerds</p>
-        <div class="flex justify-center md:justify-end space-x-4 mt-3">
-          <!-- Facebook -->
-          <a
-            href="https://facebook.com"
-            class="text-white hover:text-gold transition duration-300"
-            target="_blank"
-          >
-            <i class="fab fa-facebook-f h-5 w-5"></i>
-          </a>
+    <footer id="about" class="bg-brick text-white py-8 mt-12 relative z-10">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-2">Vuhub</h2>
+            <p class="text-offwhite/80">
+              Your complete university resource portal
+            </p>
+          </div>
+          <div class="text-center md:text-right">
+            <p class="mb-2 text-gold">Developed by</p>
+            <p class="team-nerds font-medium text-lg" onclick="openTeamModal()">
+              Team Nerds
+            </p>
+            <div class="flex justify-center md:justify-end space-x-4 mt-3">
+              <!-- Facebook -->
+              <a
+                href="https://facebook.com"
+                class="text-white hover:text-gold transition duration-300"
+                target="_blank"
+              >
+                <i class="fab fa-facebook-f h-5 w-5"></i>
+              </a>
 
-          <!-- Twitter -->
-          <a
-            href="https://twitter.com"
-            class="text-white hover:text-gold transition duration-300"
-            target="_blank"
-          >
-            <i class="fab fa-twitter h-5 w-5"></i>
-          </a>
+              <!-- Twitter -->
+              <a
+                href="https://twitter.com"
+                class="text-white hover:text-gold transition duration-300"
+                target="_blank"
+              >
+                <i class="fab fa-twitter h-5 w-5"></i>
+              </a>
 
-          <!-- GitHub -->
-          <a
-            href="https://github.com"
-            class="text-white hover:text-gold transition duration-300"
-            target="_blank"
-          >
-            <i class="fab fa-github h-5 w-5"></i>
-          </a>
+              <!-- GitHub -->
+              <a
+                href="https://github.com"
+                class="text-white hover:text-gold transition duration-300"
+                target="_blank"
+              >
+                <i class="fab fa-github h-5 w-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/20 mt-6 pt-6 text-center text-sm text-white/70"
+        >
+          <p>&copy; 2023 Vuhub. All rights reserved.</p>
         </div>
       </div>
-    </div>
-    <div
-      class="border-t border-white/20 mt-6 pt-6 text-center text-sm text-white/70"
-    >
-      <p>&copy; 2023 Vuhub. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- Team Modal -->
-<div id="teamModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="text-2xl font-bold">Meet Team Nerds</h2>
-      <span class="close-modal" onclick="closeTeamModal()">&times;</span>
-    </div>
-    <div class="modal-body">
-      <!-- Team Member 1 -->
-      <div class="team-member">
-        <div class="member-photo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-          </svg>
-        </div>
-        <div class="member-info">
-          <h3 class="member-name">MD. RAISUL ISLAM ROKTIM</h3>
-          <p class="member-id">Student ID: 242311089</p>
-          <p class="member-batch">Batch: 35</p>
-          <p class="member-description">
-            Team leader and main developer of the Vuhub portal. Specializes in frontend development and UI/UX design.
-            Passionate about creating intuitive and accessible web applications for university students.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Team Member 2 -->
-      <div class="team-member">
-        <div class="member-photo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-          </svg>
-        </div>
-        <div class="member-info">
-          <h3 class="member-name">ABDULLAH AL MAMUN</h3>
-          <p class="member-id">Student ID: 242311089</p>
-          <p class="member-batch">Batch: 35</p>
-          <p class="member-description">
-            Backend developer responsible for database management and API integration. 
-            Skilled in creating efficient data structures and ensuring smooth data flow throughout the application.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Team Member 3 -->
-      <div class="team-member">
-        <div class="member-photo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-          </svg>
-        </div>
-        <div class="member-info">
-          <h3 class="member-name">PARTHO RAJ</h3>
-          <p class="member-id">Student ID: 242311098</p>
-          <p class="member-batch">Batch: 35</p>
-          <p class="member-description">
-            Quality assurance and testing specialist. Ensures all features work correctly across different devices and browsers.
-            Also contributes to content creation and documentation for the portal.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
     </footer>
 
-    <script src="script.js"></script>
-    <script src="script2.js"></script>
+    <!-- Team Modal -->
+    <div id="teamModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="text-2xl font-bold">Meet Team Nerds</h2>
+          <span class="close-modal" onclick="closeTeamModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <!-- Team Member 1 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">MD. RAISUL ISLAM ROKTIM</h3>
+              <p class="member-id">Student ID: 242311089</p>
+              <p class="member-batch">Batch: 35</p>
+              <p class="member-description">
+                Team leader and main developer of the Vuhub portal. Specializes
+                in frontend development and UI/UX design. Passionate about
+                creating intuitive and accessible web applications for
+                university students.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">ABDULLAH AL MAMUN</h3>
+              <p class="member-id">Student ID: 242311089</p>
+              <p class="member-batch">Batch: 35</p>
+              <p class="member-description">
+                Backend developer responsible for database management and API
+                integration. Skilled in creating efficient data structures and
+                ensuring smooth data flow throughout the application.
+              </p>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">PARTHO RAJ</h3>
+              <p class="member-id">Student ID: 242311098</p>
+              <p class="member-batch">Batch: 35</p>
+              <p class="member-description">
+                Quality assurance and testing specialist. Ensures all features
+                work correctly across different devices and browsers. Also
+                contributes to content creation and documentation for the
+                portal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <script src="script.js"></script>
+      <script src="script2.js"></script>
+    </footer>
   </body>
 </html>
